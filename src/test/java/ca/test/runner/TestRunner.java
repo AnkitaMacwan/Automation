@@ -6,8 +6,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/Test2.feature",
-        glue = "ca.test.steps"
+        features = "src/test/resources/features/login.feature",
+        glue = "ca.test.steps",
+        tags="@Regression"
 
 )
 
