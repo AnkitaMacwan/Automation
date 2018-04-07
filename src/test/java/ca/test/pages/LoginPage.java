@@ -2,44 +2,59 @@ package ca.test.pages;
 
 //store locators and respective methods
 
+import ca.test.utils.CommonUtils;
+import ca.test.utils.KnowsTestContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-   public WebDriver driver;
-    By username = By.id("modal-login-button"); // By = inbuilt class which has id method and we are passing the locator and saving it in to username variable
-    By password = By.id("rawPwdLogin");
-    By loginbutton = By.id("btn_login");
+    CommonUtils commonUtils = new CommonUtils();
 
-//    public LoginPage(WebDriver driver){
-//        this.driver = driver;
-//    }
+    @FindBy(id = "modal-login-button")
+    public WebElement login;
 
+    @FindBy(id="usernameLogin")
+    public WebElement username;
 
-    public void Firefoxbrowseropening() {
-        System.setProperty("WebDriver.gecko.driver","C:\\Selenium\\geckodriver-v0.20.0-win32\\geckodriver.exe");
-        driver = new FirefoxDriver();
-        driver.get("https://atsspec.net/");
+    @FindBy(id="rawPwdLogin")
+    public WebElement password;
+
+    @FindBy(id="btn_login")
+    public WebElement loginbutton;
+
+    public LoginPage(WebDriver driver){
+        PageFactory.initElements(driver, this);
+    }
+
+    public void clickb(){
+        commonUtils.waitForElements(login , KnowsTestContext.timeout ,KnowsTestContext.driver);
+        login.click();
+    }
+
+    public void enterUserName(String user) {
+        commonUtils.waitForElements(username, KnowsTestContext.timeout, KnowsTestContext.driver);
+        username.sendKeys(user);
 
     }
 
-    public void username() {
-        driver.findElement(username).sendKeys("abc");
+    public void enterPassword(String pass) {
+        commonUtils.waitForElements(password, KnowsTestContext.timeout,KnowsTestContext.driver);
+        password.sendKeys(pass);
 
     }
 
-    public void password() {
-        driver.findElement(password).sendKeys("def");
-
-    }
-
-    public void Loginbutton(){
-        driver.findElement(loginbutton).click();
+    public void clickLoginBtn(){
+        loginbutton.click();
     }
 
     public void Quit(){
-        driver.quit();
+        KnowsTestContext.driver.quit();
     }
+
+
 }

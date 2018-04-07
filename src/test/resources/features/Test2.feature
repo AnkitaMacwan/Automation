@@ -2,14 +2,15 @@ Feature: My file
 
   @Sample:
   Scenario: Login
-  Given Enter valid Username and Password
-  When Click on Login Button
-  Then Login to Accounts
+  Given Open the Browser
+  When Enter valid Username and Password
+  Then Click on Login Button
 
-  @Regression:
-  Scenario: Browser Opening
-  Given Type the URL
-  When Loading the page
-  Then Open the Browser
+
+  @LaunchingURL
+  Scenario: Open URL
+    Given Type the URL 'https://atsspec.net/'
+    When Enter Credential
+    And Open Project Tracker
 
 
