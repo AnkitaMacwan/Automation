@@ -27,7 +27,7 @@ Feature: Sample feature file
 
     Examples:
       | username            | password |
-      | Rebeca@atsspec.co   | Zaq12wsX |
+      | abca@atsspec.co   | abc |
       | abc@atsspec.co      | hhagsfkg |
 
 
